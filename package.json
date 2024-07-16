@@ -5,7 +5,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --fix --ignore-path .gitignore"
+    "lint": "eslint . --fix --ignore-path .gitignore",
+    "electron:serve": "electron electron/main.js",
+    "electron:pack": "electron-builder"
   },
   "dependencies": {
     "@mdi/font": "7.4.47",
@@ -16,6 +18,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
+    "electron": "^31.2.1",
+    "electron-builder": "^24.13.3",
     "eslint": "^8.57.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.29.1",
