@@ -1,8 +1,5 @@
-const { log } = require('console');
 const { app, BrowserWindow ,Notification,Tray, Menu} = require('electron');
 const path = require('path');
-const { title } = require('process');
-const url = require('url');
 
 const iconPath = path.join(__dirname,'../src/assets/logo.png');
 
