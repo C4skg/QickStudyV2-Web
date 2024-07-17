@@ -8,3 +8,41 @@
 // @use 'vuetify/settings' with (
 //   $color-pack: false
 // );
+html[data-environment = "electron"]{
+    &,body{
+        margin: 0;
+        overflow: hidden;
+        height: 100%;
+    }
+    .electron-drop-bar{
+        width: 100%;
+        height: 35px;
+        background-color: rgba($color: #000000, $alpha: 0);
+        z-index: 999999;
+        position: fixed;
+        left: 0;
+        top: 0;
+        user-select: none;
+        -webkit-app-region: drag;
+    }
+    #app{
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        &::-webkit-scrollbar-thumb{
+            width: 5px;
+            background-color: #00000080;
+            border-radius: 20px;
+        }
+        &::-webkit-scrollbar{
+            width: 5px;
+            height: 5px;
+            background-color: #ccc!important;
+        }
+    }
+}
+html:not([data-environment = "electron"]){
+    .electron-drop-bar{
+        display: none;
+    }
+}
