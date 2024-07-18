@@ -5,6 +5,7 @@
       max-width="900"
     >
       <v-img
+        v-on:click="changeStyle"
         class="mb-4"
         height="150"
         src="@/assets/logo.svg"
@@ -153,5 +154,16 @@
 </template>
 
 <script setup>
-  //
+  import { useTheme } from 'vuetify';
+  const theme = useTheme();
+  var changeStyle = function(element){
+    const colorlist = Object.keys(theme.computedThemes.value);
+    const currentTheme = theme.global.name.value;
+    const pointer = colorlist.indexOf(currentTheme);
+    if(pointer == -1){
+      return false;
+    }
+    theme.global.name.value = colorlist[(pointer+1)%colorlist.length];
+    return true;
+  }
 </script>

@@ -16,9 +16,9 @@ function createWindow() {
         },
         titleBarStyle: 'hidden',
         titleBarOverlay: {
-            color: 'rgba(0,0,0,0)',
+            color: 'rgba(0,0,0)',
             height: 35,
-            symbolColor: 'white'
+            symbolColor: 'black'
         }
     });
     mainWindow.loadFile(
