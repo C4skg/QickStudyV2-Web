@@ -66,24 +66,24 @@ app.on('activate', function () {
 app.whenReady().then(()=>{
     tray = new Tray(iconPath);
     const contextMenu = Menu.buildFromTemplate([
-    {
-        label: '设置',
-        click: function () {
-            console.log('setting')
-        }
-    },
-    {
-        label: '退出',
-        click: function () {
-            if (process.platform !== 'darwin') {
-                app.quit();
+        {
+            label: '设置',
+            click: function () {
+                console.log('setting')
+            }
+        },
+        {
+            label: '退出',
+            click: function () {
+                if (process.platform !== 'darwin') {
+                    app.quit();
+                }
             }
         }
-    }
     ]);
     tray.setToolTip('QickStudy');
     tray.setContextMenu(contextMenu);
     tray.on('double-click',function(){
-    mainWindow.show();
+        mainWindow.show();
     })
 })

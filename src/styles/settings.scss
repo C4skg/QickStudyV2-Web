@@ -13,6 +13,7 @@ html[data-environment = "electron"]{
         margin: 0;
         overflow: hidden;
         height: 100%;
+        background-color: rgb(var(--v-theme-background)); 
     }
     .electron-drop-bar{
         width: 100%;
