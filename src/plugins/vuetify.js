@@ -11,19 +11,26 @@ import 'vuetify/styles'
 // Composables
 import { createVuetify } from 'vuetify'
 
-var ligth_test = {
-  dark: false,
-  colors:{
-    background: '#ccc'
-  }
+const dark = {
+    dark: true,
+    colors: {
+        background: ''
+    }
+}
+
+const light = {
+    dark: false,
+    colors: {
+        background: '#eeeeee'
+    }
 }
 
 export default createVuetify({
-  theme: {
-    defaultTheme: 'dark',
-    themes:{
-      ligth_test: ligth_test
-    }
-  },
+    theme: {
+        defaultTheme: 'dark',
+        themes: {
+            dark: dark,
+            light: light
+        }
+    },
 })
-

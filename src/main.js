@@ -18,7 +18,3 @@ const app = createApp(App)
 registerPlugins(app)
 
 app.mount('#app')
-
-if (navigator.userAgent.includes("Electron")){
-    document.documentElement.setAttribute("data-environment","electron");
-}
