@@ -14,17 +14,18 @@
     <br>
     <button v-on:click="randomUpdate">点击随机变换数据</button>
     <br>
-    <button v-on:click="changeTheme">点击切换主题</button>
+    <button v-on:click="updateTheme">点击切换主题</button>
 </template>
 
 <script setup>
-    import { useTheme } from 'vuetify'
     import { ref } from 'vue'
+    import { useTheme } from 'vuetify'
     import card from '@/components/card'
     import navbar from '@/layouts/navbar'
 
     const datas = ref([]);
     const theme = useTheme();
+
     const updateData = function(e){
         datas.value.push({
             prepend_icon: "mdi-account",
@@ -42,7 +43,8 @@
         let pointer = ~~(Math.random()*limit);
         datas.value[pointer].title = "random changed"
     }
-    const changeTheme = function(e){
+
+    const updateTheme = function(e){
         let colorlist = Object.keys(theme.computedThemes.value);
         let currentTheme = theme.global.name.value;
         let pointer = colorlist.indexOf(currentTheme);
@@ -50,6 +52,7 @@
             return false;
         }
         theme.global.name.value = colorlist[(pointer+1)%colorlist.length];
+        localStorage.setItem('theme',theme.global.name.value) 
         return true;
     }
 </script>

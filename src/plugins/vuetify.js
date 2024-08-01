@@ -27,7 +27,7 @@ const light = {
 
 export default createVuetify({
     theme: {
-        defaultTheme: 'dark',
+        defaultTheme: localStorage.getItem('theme') || 'dark',
         themes: {
             dark: dark,
             light: light
