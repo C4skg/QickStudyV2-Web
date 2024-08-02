@@ -14,14 +14,16 @@ import { createVuetify } from 'vuetify'
 const dark = {
     dark: true,
     colors: {
-        background: ''
+        background: '#22272E',
+        hoverBackgroundColor: '#000000'
     }
 }
 
 const light = {
     dark: false,
     colors: {
-        background: '#eeeeee'
+        background: '#eeeeee',
+        hoverBackgroundColor: '#F5F5F5'
     }
 }
 

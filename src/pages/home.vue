@@ -9,7 +9,6 @@
         :subtitle="item.subtitle"
         :context="item.context"
     />
-    {{item}}
     <button v-on:click="updateData">点击添加数据</button>
     <br>
     <button v-on:click="randomUpdate">点击随机变换数据</button>
@@ -45,9 +44,10 @@
     }
 
     const updateTheme = function(e){
-        let colorlist = Object.keys(theme.computedThemes.value);
-        let currentTheme = theme.global.name.value;
-        let pointer = colorlist.indexOf(currentTheme);
+        let colorlist = Object.keys(theme.computedThemes.value),
+            currentTheme = theme.global.name.value,
+            pointer = colorlist.indexOf(currentTheme);
+
         if(pointer == -1){
             return false;
         }
