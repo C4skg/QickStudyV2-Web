@@ -1,7 +1,7 @@
 
 <template>
     <navbar />
-    <card
+    <articleCard
         v-for="item in datas"
         :prepend_icon="item.prepend_icon"
         :append_icon="item.append_icon"
@@ -19,7 +19,7 @@
 <script setup>
     import { ref } from 'vue'
     import { useTheme } from 'vuetify'
-    import card from '@/components/card'
+    import articleCard from '@/components/articleCard'
     import navbar from '@/layouts/navbar'
 
     const datas = ref([]);

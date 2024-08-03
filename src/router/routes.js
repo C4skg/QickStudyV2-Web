@@ -6,7 +6,10 @@ const routes = [
     {
         path: "/home",
         name: "home",
-        component: () => import("@/pages/home.vue")
+        component: () => import("@/pages/home.vue"),
+        meta: {
+            transition: 'slide-left'
+        }
     },
     {
         path: "/user",
@@ -14,7 +17,10 @@ const routes = [
             {
                 path: "/login",
                 name: "login",
-                component: () => import("@/pages/user/login.vue")
+                component: () => import("@/pages/user/login.vue"),
+                meta: {
+                    transition: 'slide-right'
+                }
             }
         ]
     }
