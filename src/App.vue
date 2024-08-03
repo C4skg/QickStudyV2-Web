@@ -8,6 +8,11 @@
 
 <script setup>
     import { useRouter } from 'vue-router'
-    const router = useRouter();
-    router.push('/login');
+    import { useSettingStore } from '@/stores/setting.js'
+    import { useTheme } from 'vuetify'
+    const router = useRouter(),
+          settingStore = useSettingStore(),
+          theme = useTheme();
+    router.push({ name: 'login' });
+    theme.global.name.value = settingStore.theme;
 </script>

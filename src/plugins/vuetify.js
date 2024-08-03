@@ -29,10 +29,10 @@ const light = {
 
 export default createVuetify({
     theme: {
-        defaultTheme: localStorage.getItem('theme') || 'dark',
+        defaultTheme: 'light',
         themes: {
             dark: dark,
             light: light
         }
-    },
+    }
 })

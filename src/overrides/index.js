@@ -1,6 +1,7 @@
 export default function registerOverrides(current_app){
     // console.log(current_app)
 }
+
 (global => {
     const _parse = JSON.parse;
     JSON.parse = function(text,defaults=null){

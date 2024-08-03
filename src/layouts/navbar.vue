@@ -52,7 +52,7 @@
 							:prepend-icon="item.icon"
 							:text="item.name"
 							:to="item.path"
-								
+							@click="item.click"
 						></v-btn>
 					</v-list>
 				</v-menu>
@@ -60,26 +60,31 @@
 
 		</v-container>
 	</v-app-bar>
+	<settings 
+		:overlay="overlay"
+	/>
 </template>
 
 <script setup>
 	import logo from '@/assets/logo.svg'
-	import {getUserInfo} from '@/utils/user.js'
+	import { getUserInfo } from '@/utils/user.js'
 	import { ref } from 'vue'
+	import settings from '@/layouts/settings'
 
 	const links = [
 		{
 			name: '首页',
-			path: '/home'
+			path: { name: 'home' }
 		},
 		{
 			name: '登录',
-			path: '/login'
+			path: { name: 'login' }
 		}
 	]
 
 	const users = ref([]),
-		  isLogined = ref(false);
+		  isLogined = ref(false),
+		  overlay = ref(false);
 
 	getUserInfo(function(response){
 		isLogined.value = Boolean(localStorage.getItem('isLogined') == 'true');
@@ -87,17 +92,25 @@
 			users.value = [
 				{
 					name: "个人中心",
-					path: "",
+					path: "/login",
 					icon: "mdi-home"
 				},
 				{
 					name: "创作中心",
-					path: "",
+					path: "/login",
 					icon: "mdi-pencil-outline"
 				},
 				{
-					name: "退出登录",
+					name: "用户设置",
 					path: "",
+					icon: "mdi-cog",
+					click: (e) => {
+						overlay.value = true;
+					}
+				},
+				{
+					name: "退出登录",
+					path: "/login",
 					icon: "mdi-logout"
 				}
 			]

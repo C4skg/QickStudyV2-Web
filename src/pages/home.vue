@@ -19,11 +19,14 @@
 <script setup>
     import { ref } from 'vue'
     import { useTheme } from 'vuetify'
+    import {useSettingStore} from '@/stores/setting';
+
     import articleCard from '@/components/articleCard'
     import navbar from '@/layouts/navbar'
 
     const datas = ref([]);
     const theme = useTheme();
+    const settingStore = useSettingStore();
 
     const updateData = function(e){
         datas.value.push({
@@ -52,7 +55,7 @@
             return false;
         }
         theme.global.name.value = colorlist[(pointer+1)%colorlist.length];
-        localStorage.setItem('theme',theme.global.name.value) 
+        settingStore.updateTheme(theme.global.name.value);
         return true;
     }
 </script>

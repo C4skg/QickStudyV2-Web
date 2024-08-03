@@ -2,7 +2,7 @@ import { getUserInfo as _getUserInfo } from '@/api/user'
 
 export function getUserInfo(callback){
     _getUserInfo().then(function(response){
-        console.log(response)
+        // console.log(response)
     })
     callback();
 }

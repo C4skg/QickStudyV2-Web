@@ -1,3 +1,5 @@
+import { components } from "vuetify/dist/vuetify-labs.js";
+
 const routes = [
     {
         path: "/",
@@ -7,9 +9,6 @@ const routes = [
         path: "/home",
         name: "home",
         component: () => import("@/pages/home.vue"),
-        meta: {
-            transition: 'slide-left'
-        }
     },
     {
         path: "/user",
@@ -18,9 +17,11 @@ const routes = [
                 path: "/login",
                 name: "login",
                 component: () => import("@/pages/user/login.vue"),
-                meta: {
-                    transition: 'slide-right'
-                }
+            },
+            {
+                path: "/register",
+                name: "register",
+                component: () => import("@/pages/user/register.vue"),
             }
         ]
     }

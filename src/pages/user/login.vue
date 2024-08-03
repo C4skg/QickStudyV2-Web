@@ -6,9 +6,8 @@
             :src="logo"
         ></v-img>
 
-        <v-card class="mx-auto pa-12 pb-8" elevation="8" max-width="448" rounded="lg">
+        <v-card class="mx-auto pa-10 pb-8" elevation="8" max-width="448" rounded="lg">
             <div class="text-subtitle-1 text-medium-emphasis">邮箱</div>
-
             <v-text-field density="compact" placeholder="xxxx@xx.xx" prepend-inner-icon="mdi-email-outline"
                 variant="outlined"
                 type="email"
@@ -38,10 +37,26 @@
             </v-btn>
 
             <v-card-text class="text-center">
-                <a class="text-blue text-decoration-none" href="#" rel="noopener noreferrer" target="_blank">
+                <RouterLink to="/register" class="text-blue text-decoration-none">
                     前往注册 <v-icon icon="mdi-chevron-right"></v-icon>
-                </a>
+                </RouterLink>
             </v-card-text>
+
+            <div class="toolbar">
+                <v-btn
+                    class="overlayActivator"
+                    icon="mdi-cog"
+                >
+                    
+                </v-btn>
+                <v-overlay
+                    activator=".overlayActivator"
+                    scroll-strategy="none"
+                    class="align-center justify-center"
+                >
+                    <settings />
+                </v-overlay>
+            </div>
         </v-card>
     </div>
 </template>
@@ -49,6 +64,7 @@
 
 <script setup>
     import logo from '@/assets/textlogo2x.png'
+    import settings from '@/layouts/settings.vue'
     import { ref } from 'vue'
 
     const visible = ref(false);
