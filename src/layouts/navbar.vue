@@ -60,14 +60,11 @@
 
 		</v-container>
 	</v-app-bar>
-	<settings 
-		:overlay="overlay"
-	/>
 </template>
 
 <script setup>
 	import logo from '@/assets/logo.svg'
-	import { getUserInfo } from '@/utils/user.js'
+	import { getUserInfo } from '@/api/user.js'
 	import { ref } from 'vue'
 	import settings from '@/layouts/settings'
 
@@ -86,7 +83,7 @@
 		  isLogined = ref(false),
 		  overlay = ref(false);
 
-	getUserInfo(function(response){
+	getUserInfo().then((response=>{
 		isLogined.value = Boolean(localStorage.getItem('isLogined') == 'true');
 		if(isLogined.value){
 			users.value = [
@@ -115,7 +112,7 @@
 				}
 			]
 		}
-	})
+	}));
 	
 </script>
 

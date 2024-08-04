@@ -20,17 +20,12 @@ export default defineConfig({
             styles: {
                 configFile: 'src/styles/settings.scss',
             },
-        }),
-        ViteFonts({
-            google: {
-                families: [{
-                    name: 'Roboto',
-                    styles: 'wght@100;300;400;500;700;900',
-                }],
-            },
-        }),
+        })
     ],
-    define: { 'process.env': {} },
+    define: {
+        'process.env': {
+        }
+    },
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url))
@@ -51,5 +46,12 @@ export default defineConfig({
     server: {
         host: '0.0.0.0',
         port: 3000,
+        proxy: {
+            '/api': {
+                target: 'http://10.200.123.120:1234',
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/api/, "/"),
+            }
+        }
     },
 })

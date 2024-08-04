@@ -1,14 +1,17 @@
 import axios from "axios";
 
 const service = axios.create({
-    baseURL: "",
-    timeout: 5000 // ms
+    baseURL: import.meta.env.VITE_APP_BASE_URL || '/',
+    timeout: 3000 // ms
 })
 
 //requests interceptor
 service.interceptors.request.use(
     config => {
         //add or do something befroe request is sent
+        config.headers.set("Access-Control-Allow-Origin","*");
+        config.headers.set("Access-Control-Allow-Methods", "GET, POST");
+        config.headers.set("Access-Control-Allow-Headers", "Content-Type");
         return config;
     },
     error => {
@@ -20,10 +23,12 @@ service.interceptors.request.use(
 //response interceptor
 service.interceptors.response.use(
     response => {
+        const data = response.data;
 
+        return data;
     },
     error => {
-        
+        return Promise.reject(error);
     }
 )
 

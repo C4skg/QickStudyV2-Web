@@ -15,12 +15,12 @@
                     prepend-inner-icon="mdi-lock-outline" variant="outlined" @click:append-inner="visible = !visible"
                     :rules="[rules.requiredPassword]" v-model="userPassword" ></v-text-field>
 
-                <div class="forget d-flex justify-end mb-3">
-                    <a class="text-caption text-decoration-none text-blue" href="#" rel="noopener noreferrer"
-                        target="_blank">忘记密码?</a>
-                </div>
+                    <div class="forget d-flex justify-end mb-3">
+                        <RouterLink :to="{name:'remember'}" class="text-caption text-decoration-none text-blue" rel="noopener noreferrer"
+                        >忘记密码?</RouterLink>
+                    </div>
 
-                <v-btn class="mb-8 m" color="blue" size="large" variant="tonal" block :loading="loading" type="submit">
+                <v-btn class="mb-8 m" color="blue" size="large" variant="elevated" block :loading="loading" type="submit">
                     登 录
                 </v-btn>
             </v-form>
@@ -48,6 +48,7 @@
     import logo from '@/assets/textlogo2x.png'
     import settings from '@/layouts/settings.vue'
     import { ref } from 'vue'
+    import { login } from '@/api/user.js'
 
     const visible = ref(false),
           userEmail = ref(null),
@@ -64,10 +65,22 @@
         }
     };
 
+    console.log(import.meta.env)
+
     const doLogin = function(e){
         if( !forms.value ) return false;
         console.log(userEmail.value,userPassword.value)
         loading.value = true;
+        const data = {
+            username: userEmail.value,
+            password: userPassword.value
+        }
+        login(data).then((response)=>{
+            console.log(response)
+            loading.value = false;
+        }).catch((error)=>{
+            loading.value = false;
+        });
     }
 </script>
 

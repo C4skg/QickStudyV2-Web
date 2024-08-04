@@ -9,7 +9,9 @@
             >
                 <v-text-field class="mb-3" density="compact" placeholder="请输入邮箱号" prepend-inner-icon="mdi-email-outline"
                     variant="outlined" type="email" :rules="[rules.requiredEmial, rules.email]"
-                    v-model="userEmail" :readonly="loading"></v-text-field>
+                    v-model="userEmail" :readonly="loading"
+                    ref="emails"
+                    ></v-text-field>
 
                 <v-text-field class="mb-3" :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
                     :type="visible ? 'text' : 'password'" density="compact" placeholder="登录密码"
@@ -22,8 +24,8 @@
                     :rules="[rules.requiredPassword,rules.equalPassword]" v-model="userConfirmPassword" :readonly="loading"></v-text-field>
 
                 <div class="forget d-flex justify-end mb-3">
-                    <a class="text-caption text-decoration-none text-blue" href="#" rel="noopener noreferrer"
-                        target="_blank">忘记密码?</a>
+                    <RouterLink :to="{name:'remember'}" class="text-caption text-decoration-none text-blue" rel="noopener noreferrer"
+                    >忘记密码?</RouterLink>
                 </div>
 
                 <v-btn class="mb-8 m" color="blue" size="large" variant="elevated" block
@@ -55,6 +57,7 @@
     import logo from '@/assets/textlogo2x.png'
     import settings from '@/layouts/settings.vue'
     import { ref } from 'vue'
+    import { signin } from '@/api/user.js'
 
     const visible = ref(false),
           visible2 = ref(false),
@@ -62,7 +65,8 @@
           userEmail = ref(null),
           userPassword = ref(null),
           userConfirmPassword = ref(null),
-          loading = ref(false);
+          loading = ref(false),
+          emails = ref(null);
 
     const rules = {
         password: value => {
@@ -77,11 +81,19 @@
             return pattern.test(value) || '无效邮箱号'
         }
     };
-
+    console.log(emails);
     const doRegister = function () {
         if (!forms.value) return false;
         loading.value = true;
         // do register
+        const data = {
+            email: userEmail.value,
+            password: userPassword.value,
+            confirm: userConfirmPassword.value
+        }
+        signin(data).then((response)=>{
+            console.log(response)
+        })
     }
 </script>
 
