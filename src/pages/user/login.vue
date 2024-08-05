@@ -49,12 +49,16 @@
     import settings from '@/layouts/settings.vue'
     import { ref } from 'vue'
     import { login } from '@/api/user.js'
+    import Swal from "sweetalert2";
+    import { useRouter } from 'vue-router'
 
     const visible = ref(false),
           userEmail = ref(null),
           userPassword = ref(null),
           forms = ref(false),
           loading = ref(false);
+        
+    const router = useRouter();
 
     const rules = {
         requiredEmial: value => !!value || '请输入邮箱号',
@@ -65,18 +69,35 @@
         }
     };
 
-    console.log(import.meta.env)
-
     const doLogin = function(e){
         if( !forms.value ) return false;
-        console.log(userEmail.value,userPassword.value)
         loading.value = true;
         const data = {
             username: userEmail.value,
             password: userPassword.value
         }
         login(data).then((response)=>{
-            console.log(response)
+            if (response.code != 200){
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: `${response.message},错误码：${response.code}`,
+                    showConfirmButton: false,
+                    toast: true,
+                    timer: 1500
+                });
+            }else{
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${response.message}`,
+                    showConfirmButton: false,
+                    toast: true,
+                    timer: 1500
+                }).then(()=>{
+                    router.push({name: 'home'})
+                });
+            }
             loading.value = false;
         }).catch((error)=>{
             loading.value = false;

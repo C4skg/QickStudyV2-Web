@@ -10,7 +10,7 @@ const routes = [
         name: "home",
         component: () => import("@/pages/home.vue"),
         meta: {
-            title: "首页"
+            title: "QickStudy 平台"
         }
     },
     {
@@ -41,6 +41,14 @@ const routes = [
                 }
             }
         ]
+    },
+    {
+        path: "/404",
+        name: "404",
+        component: () => import("@/pages/404.vue"),
+        meta: {
+            title: "404 - 页面不存在"
+        }
     }
 ]
 export default routes;

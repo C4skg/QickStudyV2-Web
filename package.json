@@ -18,6 +18,7 @@
     "pinia": "^2.2.0",
     "pinia-plugin-persistedstate": "^3.2.1",
     "roboto-fontface": "*",
+    "sweetalert2": "^11.12.4",
     "vue": "^3.4.31",
     "vuetify": "^3.6.11"
   },

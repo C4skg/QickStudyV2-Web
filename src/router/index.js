@@ -27,6 +27,21 @@ const router = createRouter({
 //         console.error(err)
 //     }
 // })
+router.onError((err,to) => {
+    console.log(
+        'route in error',
+        {err,to}
+    )
+})
+router.beforeEach((to,from,next)=>{
+    if ( !router.hasRoute(to.name) ){
+        next({name: '404'})
+    }
+    if ( to.meta.title ){
+        document.title = to.meta.title
+    };
+    next();
+})
 
 // router.isReady().then(() => {
 //     localStorage.removeItem('vuetify:dynamic-reload')

@@ -13,6 +13,6 @@
     const router = useRouter(),
           settingStore = useSettingStore(),
           theme = useTheme();
-    router.push({ name: 'login' });
+    // router.push({ name: 'login' });
     theme.global.name.value = settingStore.theme;
 </script>
