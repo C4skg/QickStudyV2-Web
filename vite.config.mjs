@@ -41,7 +41,7 @@ export default defineConfig({
         ],
     },
     build: {
-        sourcemap: false
+        sourcemap: false,
     },
     server: {
         host: '0.0.0.0',

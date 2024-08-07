@@ -19,7 +19,7 @@ service.interceptors.request.use(
     },
     error => {
         console.log('error in request interceptor')
-        return Promise.reject(error)
+        return Promise.reject(error.response)
     }
 )
 
@@ -40,14 +40,16 @@ service.interceptors.response.use(
         return data;
     },
     error => {
-        Swal.fire({
-            position: "top-end",
-            icon: "error",
-            title: "网络异常",
-            showConfirmButton: false,
-            toast: true,
-            timer: 1500
-        });
+        if (error.response.status == 404){
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: `未找到接口`,
+                showConfirmButton: false,
+                toast: true,
+                timer: 1500
+            })
+        }
         return Promise.reject(error);
     }
 )

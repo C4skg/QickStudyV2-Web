@@ -64,10 +64,13 @@
 
 <script setup>
 	import logo from '@/assets/logo.svg'
-	import { getUserInfo } from '@/api/user.js'
+	import { getUserInfo,logout } from '@/api/user.js'
 	import { ref } from 'vue'
+	import { useRouter } from 'vue-router';
 	import settings from '@/layouts/settings'
-
+	import Swal from "sweetalert2";
+	
+    const router = useRouter();
 	const links = [
 		{
 			name: '首页',
@@ -83,36 +86,70 @@
 		  isLogined = ref(false),
 		  overlay = ref(false);
 
-	getUserInfo().then((response=>{
-		isLogined.value = Boolean(localStorage.getItem('isLogined') == 'true');
-		if(isLogined.value){
-			users.value = [
-				{
-					name: "个人中心",
-					path: "/login",
-					icon: "mdi-home"
-				},
-				{
-					name: "创作中心",
-					path: "/login",
-					icon: "mdi-pencil-outline"
-				},
-				{
-					name: "用户设置",
-					path: "",
-					icon: "mdi-cog",
-					click: (e) => {
-						overlay.value = true;
-					}
-				},
-				{
-					name: "退出登录",
-					path: "/login",
-					icon: "mdi-logout"
+	isLogined.value = Boolean(localStorage.getItem('isLogined') == 'true');
+	if(isLogined.value){
+		users.value = [
+			{
+				name: "个人中心",
+				path: "/login",
+				icon: "mdi-home"
+			},
+			{
+				name: "创作中心",
+				path: "/login",
+				icon: "mdi-pencil-outline"
+			},
+			{
+				name: "用户设置",
+				path: "",
+				icon: "mdi-cog",
+				click: (e) => {
+					overlay.value = true;
 				}
-			]
-		}
-	}));
+			},
+			{
+				name: "退出登录",
+				path: "",
+				click: (e) => {
+					logout().then((response) => {
+						if( response.code!=2000 ){
+							Swal.fire({
+								position: "top-end",
+								icon: "error",
+								title: `${response.message}`,
+								showConfirmButton: false,
+								toast: true,
+								timer: 1500
+							});
+							return false;
+						};
+						Swal.fire({
+							position: "top-end",
+							icon: "success",
+							title: `${response.message}`,
+							showConfirmButton: false,
+							toast: true,
+							timer: 1500
+						}).then(()=>{
+							router.push({
+								name: "login"
+							})
+						});
+					}).catch((error) => {
+						Swal.fire({
+							position: "top-end",
+							icon: "error",
+							title: `${error.response.data.message}`,
+							showConfirmButton: false,
+							toast: true,
+							timer: 1500
+						});
+					});
+				},
+				icon: "mdi-logout"
+			}
+		]
+	};
 	
 </script>
 
