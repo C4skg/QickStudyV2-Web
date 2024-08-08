@@ -139,7 +139,7 @@
 						Swal.fire({
 							position: "top-end",
 							icon: "error",
-							title: `${error.response.data.message}`,
+							title: `退出登录错误`,
 							showConfirmButton: false,
 							toast: true,
 							timer: 1500

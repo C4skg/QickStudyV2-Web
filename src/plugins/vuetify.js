@@ -14,25 +14,35 @@ import { createVuetify } from 'vuetify'
 const dark = {
     dark: true,
     colors: {
-        background: '#22272E',
-        hoverBackgroundColor: '#000000'
+
     }
 }
 
 const light = {
     dark: false,
     colors: {
-        background: '#eeeeee',
+        background: '#ECEFF1',
         hoverBackgroundColor: '#F5F5F5'
     }
 }
+
+const qickstudy = {
+    dark: true,
+    colors: {
+        background: '#22272E',
+        surface: '#2D333B',
+        'on-surface': '#adbac7'
+    }
+}
+
 
 export default createVuetify({
     theme: {
         defaultTheme: 'light',
         themes: {
             dark: dark,
-            light: light
+            light: light,
+            qickstudy: qickstudy
         }
     }
 })

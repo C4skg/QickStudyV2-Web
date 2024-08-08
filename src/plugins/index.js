@@ -12,8 +12,8 @@ import overrides from '@/overrides'
 
 export function registerPlugins(app) {
     app
+        .use(overrides)
         .use(pinia)
         .use(vuetify)
         .use(router)
-        .use(overrides)
 }
