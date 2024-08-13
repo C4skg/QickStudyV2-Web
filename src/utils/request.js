@@ -36,11 +36,22 @@ service.interceptors.response.use(
                 timer: 1500
             });
         }
-        const data = response.data;
-        return data;
+        return response.data;
     },
+
     error => {
-        if (error.response.status == 404){
+        console.log(error)
+        if (error.code == "ECONNABORTED"){
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: `网络连接错误`,
+                showConfirmButton: false,
+                toast: true,
+                timer: 1500
+            })
+        }
+        else if (error.response.status == 404){
             Swal.fire({
                 position: "top-end",
                 icon: "error",
@@ -51,6 +62,9 @@ service.interceptors.response.use(
             })
         }
         return Promise.reject(error);
+    },
+    complete => {
+        console.log(complete)
     }
 )
 
