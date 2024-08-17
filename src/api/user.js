@@ -15,9 +15,25 @@ export function logout(){
     })
 }
 
-export function signin(data){
+export function register(data){
     return request({
-        url: '/user/signin',
+        url: '/user/register',
+        method: 'post',
+        data
+    })
+}
+
+export function sendEmail(data){
+    return request({
+        url: "/user/register/emailCaptch",
+        method: 'post',
+        data
+    })
+}
+
+export function doregister(data){
+    return request({
+        url: '/user/register/doregister',
         method: 'post',
         data
     })

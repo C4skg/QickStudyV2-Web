@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 
 const service = axios.create({
     baseURL: import.meta.env.VITE_APP_BASE_URL || '/api',
-    timeout: 3000 // ms
+    timeout: 5000 // ms
 })
 
 //requests interceptor
