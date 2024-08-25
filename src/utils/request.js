@@ -41,7 +41,7 @@ service.interceptors.response.use(
 
     error => {
         console.log(error)
-        if (error.code == "ECONNABORTED"){
+        if (error.code == "ERR_BAD_RESPONSE"){
             Swal.fire({
                 position: "top-end",
                 icon: "error",

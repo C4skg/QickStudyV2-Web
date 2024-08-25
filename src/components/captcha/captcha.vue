@@ -19,7 +19,7 @@
 
 
                 <v-btn 
-                    class="mb-8 mt-2" max-width="50%" color="blue" size="large" variant="elevated" block
+                    class="mb-8 mt-2" max-width="50%" color="primary" size="large" variant="elevated" block
                     :disabled="!forms"
                     type="submit"
                 >
@@ -31,7 +31,7 @@
     </v-card>
     <v-card class="loading pa-3" v-if="loaded">
         <div class="text-center">
-            <v-progress-circular :rotate="360" :size="50" :width="5" color="blue" indeterminate>
+            <v-progress-circular :rotate="360" :size="50" :width="5" color="primary" indeterminate>
               <template v-slot:default> <v-icon icon="mdi-security" size="30" /> </template>
             </v-progress-circular>
           </div>
@@ -87,7 +87,6 @@
                     captchaButton();
                 }
             }).catch((error)=>{
-                console.log('catcha error')
                 captchaButton();
             });
         } else {

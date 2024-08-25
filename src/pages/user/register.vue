@@ -10,8 +10,8 @@
         <v-window-item :value="2">
             <div class="registerForm">
                 <emailCaptcha
-                    :email="email"
-                    :token="token"
+                    :email="registerStore.email"
+                    :token="registerStore.token"
                     @emitBack="pre"
                 />
             </div>
@@ -22,18 +22,18 @@
 <script setup>
     import { ref } from 'vue'
 
+    import { useRegisterStore } from '@/stores/user'
+
     // compoents
     import registerForm from '@/layouts/registerForm.vue'
     import emailCaptcha from '@/components/captcha/emailCaptcha.vue'
 
-    const step = ref(1),
-          email = ref(""),
-          token = ref("");
+    const registerStore = useRegisterStore();
+
+    const step = ref(1);
 
 
-    const next = function(data){
-        email.value = data.email;
-        token.value = data.token;
+    const next = function(){
         step.value ++;
         switch(step.value){
             case 1: return 'card-0'
@@ -47,11 +47,11 @@
             case 2: return 'card-1'
         }
     }
-    // next({
-    //     email: 'test',
-    //     token: "test123"
-    // });
-
+    if ( registerStore.getTokenTime() >= 3600 ){
+        registerStore.clear();
+    }else if ( registerStore.isValid()){
+        next()
+    }
 </script>
 
 <style scoped>

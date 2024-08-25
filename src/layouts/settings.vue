@@ -1,9 +1,9 @@
 <template>
-    <v-card class="setting pa-3">
+    <v-card class="setting pa-3" width="100%" height="100%">
         <div class="text-h6 pa-2">设置</div>
         <div class="sheet">
-            <div class="d-flex flex-row">
-                <v-tabs v-model="tab" color="primary" direction="vertical">
+            <div class="d-flex flex-row container">
+                <v-tabs v-model="tab" color="primary" direction="vertical" bg-color="background" slider-color="#f78166">
                     <v-tab prepend-icon="mdi-emoticon" text="偏好设置" value="偏好设置" color></v-tab>
                 </v-tabs>
 
@@ -12,12 +12,12 @@
                         <v-radio-group v-model="radios" @update:modelValue="radiosChange">
                             <v-card class="d-flex align-center pa-5 ga-5 flex-wrap" max-width="830px" flat>
                                 <v-card 
-                                    class="d-flex flex-column align-center justify-center" width="250" height="200"
+                                    class="d-flex flex-column align-center justify-center" width="240" height="180"
                                     hover variant="outlined"
                                     v-for="(name,index) in themeLists"
                                     :theme="name"
                                     >
-                                    <v-card class="stylecard" width="100%" height="180">
+                                    <v-card class="stylecard" width="100%" height="100%">
                                         <div class="bar"></div>
 
                                         <div class="center">
@@ -59,18 +59,15 @@
 <style scoped>
     .setting {
         width: 100%;
-        height: 100%;
+        height: 600px;
         min-width: 800px;
         min-height: 500px;
 
-        & .left {
-            width: 20%;
-            height: 500px;
-
-            & .navbtn {
-                width: 100%;
-            }
+        .container {
+            width: 100%;
+            height: 400px;
         }
+        
     }
     .stylecard{
         background: rgb(var(--v-theme-background));

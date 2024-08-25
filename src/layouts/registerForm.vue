@@ -24,11 +24,11 @@
                     :rules="[rules.requiredPassword,rules.equalPassword]" v-model="userConfirmPassword" :readonly="loading"></v-text-field>
     
                 <div class="forget d-flex justify-end mb-3">
-                    <RouterLink :to="{name:'remember'}" class="text-caption text-decoration-none text-blue" rel="noopener noreferrer"
+                    <RouterLink :to="{name:'remember'}" class="text-caption text-decoration-none text-secondary"rel="noopener noreferrer"
                     >忘记密码?</RouterLink>
                 </div>
     
-                <v-btn class="mb-8 m" color="blue" size="large" variant="elevated" block
+                <v-btn class="mb-8 m" color="primary" size="large" variant="elevated" block
                     :loading="loading"
                     type="submit"
                 >
@@ -46,7 +46,7 @@
             </v-form>
     
             <v-card-text class="text-center">
-                <RouterLink :to="{name: 'login'}" class="text-blue text-decoration-none">
+                <RouterLink :to="{name: 'login'}" class="text-secondary text-decoration-none">
                     前往登录 <v-icon icon="mdi-chevron-right"></v-icon>
                 </RouterLink>
             </v-card-text>
@@ -69,6 +69,10 @@
     import { register } from '@/api/user.js'
     import Swal from "sweetalert2";
 
+
+    //store
+    import { useRegisterStore } from '@/stores/user'
+
     // captcha
     import captcha from '@/components/captcha/captcha.vue'
     import settings from '@/layouts/settings.vue'
@@ -82,6 +86,7 @@
           loading = ref(false),
           emails = ref(null);
 
+    const registerStore = useRegisterStore();
 
     const rules = {
         password: value => {
@@ -105,8 +110,8 @@
     }
 
     const emit = defineEmits(['emitButton']);
-    const emitButton = function(data){
-        emit('emitButton',data);
+    const emitButton = function(){
+        emit('emitButton');
     }
 
     const getCaptcha = function(captcha){
@@ -129,10 +134,11 @@
                     timer: 1500
                 });
             }else{
-                emitButton({
-                    email: data.email,
-                    token: response.token
-                });
+                registerStore.update(
+                    data.email,
+                    response.token
+                )
+                emitButton();
             }
             loading.value = false;
         }).catch((error)=>{

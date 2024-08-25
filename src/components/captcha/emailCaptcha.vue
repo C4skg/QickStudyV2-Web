@@ -24,7 +24,7 @@
                     class="mb-8" divider="" length="6" variant="outlined" width="100%"></v-otp-input>
 
                 <div class="text-caption">
-                    <v-btn class="mb-8 m" color="blue" size="large" variant="elevated" block
+                    <v-btn class="mb-8 m" color="primary" size="large" variant="elevated" block
                         :disabled="delayTime > 0"
                         :loading="loading"
                         @click="btn_sendMail"

@@ -16,11 +16,11 @@
                     :rules="[rules.requiredPassword]" v-model="userPassword" ></v-text-field>
 
                     <div class="forget d-flex justify-end mb-3">
-                        <RouterLink :to="{name:'remember'}" class="text-caption text-decoration-none text-blue" rel="noopener noreferrer"
+                        <RouterLink :to="{name:'remember'}" class="text-caption text-decoration-none text-secondary" rel="noopener noreferrer"
                         >忘记密码?</RouterLink>
                     </div>
 
-                <v-btn class="mb-8 m activate" color="blue" size="large" variant="elevated" block :loading="loading" type="submit">
+                <v-btn class="mb-8 m activate" color="primary" size="large" variant="elevated" block :loading="loading" type="submit">
                     登 录
                 </v-btn>
                 <!-- user captcha -->
@@ -35,7 +35,7 @@
             </v-form>
 
             <v-card-text class="text-center">
-                <RouterLink to="/register" class="text-blue text-decoration-none">
+                <RouterLink to="/register" class="text-secondary text-decoration-none">
                     前往注册 <v-icon icon="mdi-chevron-right"></v-icon>
                 </RouterLink>
             </v-card-text>
