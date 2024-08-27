@@ -86,12 +86,13 @@
 		  isLogined = ref(false),
 		  overlay = ref(false);
 
-	isLogined.value = Boolean(localStorage.getItem('isLogined') == 'true');
+	isLogined.value = localStorage.getItem('isLogined',true);
+
 	if(isLogined.value){
 		users.value = [
 			{
 				name: "个人中心",
-				path: "/login",
+				path: { name: 'user.home' , params: { userId: 1}},
 				icon: "mdi-home"
 			},
 			{

@@ -18,7 +18,13 @@
                                     :theme="name"
                                     >
                                     <v-card class="stylecard" width="100%" height="100%">
-                                        <div class="bar"></div>
+                                        <div class="bar pl-4 pr-4 pt-1 pb-1">
+                                            <div class="control d-flex align-center justify-space-between">
+                                                <div class="btn rounded"></div>
+                                                <div class="btn rounded"></div>
+                                                <div class="btn rounded"></div>
+                                            </div>
+                                        </div>
 
                                         <div class="center">
                                             <div class="main"></div>
@@ -73,8 +79,15 @@
         background: rgb(var(--v-theme-background));
         & .bar{
             width: 100%;
-            height: 20px;
             background-color: rgb(var(--v-theme-surface));
+            .control{
+                width: 50%;
+                .btn{
+                    width: 20%;
+                    height: 10px;
+                    background-color: rgb(var(--v-theme-primary));
+                }
+            }
         }
         & .center{
             width: 80%;

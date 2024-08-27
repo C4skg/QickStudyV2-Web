@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-export const useUserStore = defineStore("user", {
+export const useUserInfoStore = defineStore("userinfo", {
     state: () => ({
         
     }),
@@ -30,12 +30,10 @@ export const useRegisterStore = defineStore("register", {
             return (this.email && this.token);
         },
         getTokenTime(){
-            if (!this.time ){
+            if ( !this.time ){
                 return 3600;
             }
-            return (
-                parseInt((new Date().getTime() - this.time) / 1000)
-            )
+            return parseInt((new Date().getTime() - this.time) / 1000)
         }
     },
     persist: true

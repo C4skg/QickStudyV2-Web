@@ -2,7 +2,7 @@
     <div class="login">
         <v-img class="mx-auto my-6" max-width="280" :src="logo"></v-img>
 
-        <v-card class="mx-auto pa-10 pb-6" elevation="8" max-width="450" min-width="400" width="450" rounded="lg">
+        <v-card class="mx-auto pa-10 pb-6" elevation="10" max-width="450" min-width="400" width="450" rounded="lg">
             <v-form
                 v-model="forms"
                 @submit.prevent="requestCaptcha"
@@ -35,7 +35,7 @@
             </v-form>
 
             <v-card-text class="text-center">
-                <RouterLink to="/register" class="text-secondary text-decoration-none">
+                <RouterLink :to="{name:'register'}" class="text-secondary text-decoration-none">
                     前往注册 <v-icon icon="mdi-chevron-right"></v-icon>
                 </RouterLink>
             </v-card-text>

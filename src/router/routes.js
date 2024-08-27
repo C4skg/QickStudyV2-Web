@@ -17,7 +17,16 @@ const routes = [
         path: "/user",
         children: [
             {
-                path: "/login",
+                //用户主页
+                path: "/user/:userId?",
+                name: "user.home",
+                component: () => import("@/pages/user/home.vue"),
+                meta: {
+                    title: "",
+                }
+            },
+            {
+                path: "/user/login",
                 name: "login",
                 component: () => import("@/pages/user/login.vue"),
                 meta: {
@@ -25,7 +34,7 @@ const routes = [
                 }
             },
             {
-                path: "/register",
+                path: "/user/register",
                 name: "register",
                 component: () => import("@/pages/user/register.vue"),
                 meta: {
@@ -33,7 +42,7 @@ const routes = [
                 }
             },
             {
-                path: "/remember",
+                path: "/user/remember",
                 name: "remember",
                 component: () => import("@/pages/user/remember.vue"),
                 meta: {
@@ -43,12 +52,25 @@ const routes = [
         ]
     },
     {
-        path: "/404",
-        name: "404",
-        component: () => import("@/pages/404.vue"),
-        meta: {
-            title: "404 - 页面不存在"
-        }
+        path: "/error",
+        children: [
+            {
+                path: "/404",
+                name: "404",
+                component: () => import("@/pages/error/404.vue"),
+                meta: {
+                    title: "404 - 页面不存在"
+                }
+            },
+            {
+                path: "/500",
+                name: "500",
+                component: () => import("@/pages/error/500.vue"),
+                meta: {
+                    title: "500 - 服务器错误"
+                }
+            }
+        ]
     }
 ]
 export default routes;

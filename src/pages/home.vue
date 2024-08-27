@@ -54,8 +54,6 @@
         return true;
     }
 
-    console.log(settingStore.theme)
-
 </script>
 
 <style scoped>

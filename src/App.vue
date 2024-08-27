@@ -10,9 +10,11 @@
     import { useRouter } from 'vue-router'
     import { useSettingStore } from '@/stores/setting.js'
     import { useTheme } from 'vuetify'
+
     const router = useRouter(),
           settingStore = useSettingStore(),
           theme = useTheme();
-    // router.push({ name: 'login' });
+    // set theme
     theme.global.name.value = settingStore.theme;
+    localStorage.setItem('isLogined', true);
 </script>
