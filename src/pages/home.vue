@@ -1,7 +1,9 @@
 <template>
     <navbar />
-    <articleCard v-for="item in datas" :prepend_icon="item.prepend_icon" :append_icon="item.append_icon"
-        :title="item.title" :subtitle="item.subtitle" :context="item.context" />
+    <articleCard v-for="(item, index) in datas"
+        :title="item.title" :subtitle="item.subtitle" :context="item.context" :images="item.images" :footer="item.footer"
+    >
+    </articleCard>
     <button v-on:click="updateData">点击添加数据</button>
     <br>
     <button v-on:click="randomUpdate">点击随机变换数据</button>
@@ -19,17 +21,24 @@
     import articleCard from '@/components/articleCard'
     import navbar from '@/layouts/navbar'
 
+    // Commen function import
+    import { getNowTime } from '@/utils/function.js'
+
     const datas = ref([]);
     const theme = useTheme();
     const settingStore = useSettingStore();
 
+
     const updateData = function (e) {
         datas.value.push({
-            prepend_icon: "mdi-account",
-            append_icon: "mdi-check",
-            title: "testsetsets",
-            subtitle: "subtitle test test test test",
-            context: "context teset testsetsetset"
+            title: "testsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsets",
+            context: "context teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetset",
+            images: "http://qickstudy.c4skg.top/themes/upload/2024-07-10/12768759e2ba0189a099ed59c46845c0.jpg",
+            footer: {
+                time: getNowTime(),
+                author: "author",
+                device: "device"
+            }
         })
     }
     const randomUpdate = function (e) {

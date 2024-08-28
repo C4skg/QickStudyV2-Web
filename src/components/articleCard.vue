@@ -1,70 +1,72 @@
 <template>
-    <v-card max-width="800px">
-        <v-card-title class="text-overline">
-          Progress
-  
-          <div class="text-green-darken-3 text-h3 font-weight-bold">90%</div>
-  
-          <div class="text-h6 text-medium-emphasis font-weight-regular">
-            $2,938.00 remaining
-          </div>
-        </v-card-title>
-        <br>
-        <v-card-text>
-          <div
-            :style="`right: calc(${review} - 32px)`"
-            class="position-absolute mt-n8 text-caption text-green-darken-3"
-          >
-            Eligibility review
-          </div>
-          <v-progress-linear
-            color="green-darken-3"
-            height="22"
-            model-value="90"
-            rounded="lg"
-          >
-            <v-badge
-              :style="`right: ${review}`"
-              class="position-absolute"
-              color="white"
-              dot
-              inline
-            ></v-badge>
-          </v-progress-linear>
-  
-          <div class="d-flex justify-space-between py-3">
-            <span class="text-green-darken-3 font-weight-medium">
-              $26,442.00 remitted
-            </span>
-  
-            <span class="text-medium-emphasis"> $29,380.00 total </span>
-          </div>
-        </v-card-text>
-  
-        <v-divider></v-divider>
-  
-        <v-list-item
-          append-icon="mdi-chevron-right"
-          lines="two"
-          subtitle="Details and agreement"
-          link
-        ></v-list-item>
+    <v-card 
+        max-width="1000px" 
+        class="d-flex article-card ga-5 py-3 px-4"
+    >
+        <div class="images" v-if="images">
+            <img :src="images" class="rounded-lg">
+        </div>
+        <div class="content" :style="{width: images? '75%' : '100%'}">
+            <div class="title text-h5 font-weight-medium">
+                {{ title }}
+            </div>
+            <div class="textbody my-2 text-start text-medium-emphasis">
+                {{ context }}
+            </div>
+            <div class="footer d-flex">
+                <div class="time">
+                    {{ footer.time }}
+                </div>
+                <div class="author">
+                    {{ footer.author }}
+                </div>
+                <div class="device">
+                    {{ footer.device }}
+                </div>
+            </div>
+        </div>
     </v-card>
 </template>
 
 <script setup>
     const props = defineProps({
-        prepend_icon: String,
-        append_icon: String,
         title: String,
-        subtitle: String,
-        context: String
+        context: String,
+        images: String,
+        footer: Object
     })
 
 </script>
 
 <style scoped>
-    .cardStyles{
-        margin: 1px 0;
+    .article-card {
+        margin: 20px 0;
+        .images{
+            width: 220px;
+            height: 140px;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .content{
+            .title{
+                width: 70%;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+            .textbody{
+                width: 100%;
+                overflow: hidden;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                display: -webkit-box;
+                text-overflow: ellipsis;
+            }
+            .footer{
+                width: 100%;
+            }
+        }
     }
 </style>
