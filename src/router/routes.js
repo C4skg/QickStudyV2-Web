@@ -27,7 +27,7 @@ const routes = [
             },
             {
                 path: "/user/login",
-                name: "login",
+                name: "user.login",
                 component: () => import("@/pages/user/login.vue"),
                 meta: {
                     title: "登录"
@@ -35,7 +35,7 @@ const routes = [
             },
             {
                 path: "/user/register",
-                name: "register",
+                name: "user.register",
                 component: () => import("@/pages/user/register.vue"),
                 meta: {
                     title: "注册"
@@ -43,7 +43,7 @@ const routes = [
             },
             {
                 path: "/user/remember",
-                name: "remember",
+                name: "user.remember",
                 component: () => import("@/pages/user/remember.vue"),
                 meta: {
                     title: "重置密码"

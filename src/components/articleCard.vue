@@ -2,15 +2,16 @@
     <v-card 
         max-width="1000px" 
         class="d-flex article-card ga-5 py-3 px-4"
+        flat
     >
         <div class="images" v-if="images">
             <img :src="images" class="rounded-lg">
         </div>
-        <div class="content" :style="{width: images? '75%' : '100%'}">
+        <div class="content">
             <div class="title text-h5 font-weight-medium">
                 {{ title }}
             </div>
-            <div class="textbody my-2 text-start text-medium-emphasis">
+            <div class="textbody mt-1 mb-3 text-start text-medium-emphasis">
                 {{ context }}
             </div>
             <div class="footer d-flex">
@@ -42,7 +43,7 @@
     .article-card {
         margin: 20px 0;
         .images{
-            width: 220px;
+            width: 240px;
             height: 140px;
             img{
                 width: 100%;
@@ -50,6 +51,8 @@
             }
         }
         .content{
+            min-width: 360px;
+            width: calc(100% - 240px);
             .title{
                 width: 70%;
                 overflow: hidden;
@@ -59,12 +62,20 @@
             .textbody{
                 width: 100%;
                 overflow: hidden;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
                 display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
                 text-overflow: ellipsis;
             }
             .footer{
+                width: 100%;
+            }
+        }
+        @media screen and (max-width:600px) {
+            .images{
+                display: none;
+            }
+            .content{
                 width: 100%;
             }
         }

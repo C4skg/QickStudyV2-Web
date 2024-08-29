@@ -24,7 +24,7 @@
                     :rules="[rules.requiredPassword,rules.equalPassword]" v-model="userConfirmPassword" :readonly="loading"></v-text-field>
     
                 <div class="forget d-flex justify-end mb-3">
-                    <RouterLink :to="{name:'remember'}" class="text-caption text-decoration-none text-secondary"rel="noopener noreferrer"
+                    <RouterLink :to="{name:'user.remember'}" class="text-caption text-decoration-none text-secondary"rel="noopener noreferrer"
                     >忘记密码?</RouterLink>
                 </div>
     
@@ -46,7 +46,7 @@
             </v-form>
     
             <v-card-text class="text-center">
-                <RouterLink :to="{name: 'login'}" class="text-secondary text-decoration-none">
+                <RouterLink :to="{name: 'user.login'}" class="text-secondary text-decoration-none">
                     前往登录 <v-icon icon="mdi-chevron-right"></v-icon>
                 </RouterLink>
             </v-card-text>
