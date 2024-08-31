@@ -36,6 +36,7 @@ const OneDarkPro = {
 }
 
 const AuroraDream = {
+    dark: false,
     colors: {
         primary: '#FF6F61',     // 主色 (珊瑚红)
         secondary: '#4A90E2',   // 次色 (深海蓝)

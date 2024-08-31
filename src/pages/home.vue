@@ -1,9 +1,12 @@
 <template>
     <navbar />
-    <articleCard v-for="(item, index) in datas"
-        :title="item.title" :subtitle="item.subtitle" :context="item.context" :images="item.images" :footer="item.footer"
-    >
-    </articleCard>
+    <div class="d-flex flex-column ga-1 container pt-5">
+        <articleCard v-for="(item, index) in datas"
+            :articleId="item.articleId"
+            :title="item.title" :subtitle="item.subtitle" :context="item.context" :images="item.images" :footer="item.footer"
+        >
+        </articleCard>
+    </div>
     <button v-on:click="updateData">点击添加数据</button>
     <br>
     <button v-on:click="randomUpdate">点击随机变换数据</button>
@@ -31,13 +34,16 @@
 
     const updateData = function (e) {
         datas.value.push({
-            title: "testsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsets",
+            articleId: 1,
+            title: "你好testsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsetstestsetsets",
             context: "context teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetsetcontext teset testsetsetset".split(" ").join(""),
-            images: "http://qickstudy.c4skg.top/themes/upload/2024-07-10/12768759e2ba0189a099ed59c46845c0.jpg",
+            images: Math.random() > 0.5 ? "http://qickstudy.c4skg.top/themes/upload/2024-07-10/12768759e2ba0189a099ed59c46845c0.jpg" : '',
             footer: {
-                time: getNowTime(),
+                userid: "1",
+                avator: "http://qickstudy.c4skg.top/themes/upload/2024-07-10/12768759e2ba0189a099ed59c46845c0.jpg",
                 author: "author",
-                device: "device"
+                comment: "1234677,123",
+                agreeNumber: "2313,123"
             }
         })
     }
@@ -66,5 +72,8 @@
 </script>
 
 <style scoped>
-    
+    .container{
+        max-width: 1000px;
+        margin: 0 auto;
+    }
 </style>

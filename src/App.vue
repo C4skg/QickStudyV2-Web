@@ -15,6 +15,7 @@
           settingStore = useSettingStore(),
           theme = useTheme();
     // set theme
+    console.log(settingStore.theme);
     theme.global.name.value = settingStore.theme;
     localStorage.setItem('isLogined', true);
 </script>

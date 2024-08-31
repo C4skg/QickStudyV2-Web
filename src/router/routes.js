@@ -52,6 +52,17 @@ const routes = [
         ]
     },
     {
+        path: "/article",
+        children: [
+            {
+                path: "/article/detail/:articleId",
+                name: "article.detail",
+                component: () => import("@/pages/article/detail.vue"),
+                meta: {}
+            }
+        ]
+    },
+    {
         path: "/error",
         children: [
             {

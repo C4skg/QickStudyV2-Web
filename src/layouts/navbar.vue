@@ -15,7 +15,7 @@
 			
 			<v-btn
 				v-for="link in links"
-				:prepend-icon="link.icon"
+				:prepend-icon="link.icon ?? ''"
 				:to="link.path"
 				:text="link.name"
 				variant="text"
@@ -118,7 +118,7 @@
 	const links = [
 		{
 			name: '首页',
-			icon: 'mdi-home',
+			// icon: 'mdi-home',
 			path: { name: 'home' }
 		},
 		{

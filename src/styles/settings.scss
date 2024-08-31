@@ -22,7 +22,14 @@
     height: 1px;
     background-color: #ccc!important;
 }
+body{
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
 img{
     width: 100%;
     height: 100%;
+}
+a{
+    color: inherit;
+    text-decoration: none;
 }
