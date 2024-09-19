@@ -11,6 +11,11 @@ service.interceptors.request.use(
     config => {
         //add or do something befroe request is sent
         // const url = new URL(config.url);
+
+        // 避免重复发起请求
+        // ...
+        //
+
         config.headers.set("Access-Control-Allow-Origin","*");
         config.headers.set("Access-Control-Allow-Methods", "GET, POST");
         config.headers.set("Access-Control-Allow-Headers", "Content-Type");
