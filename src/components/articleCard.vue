@@ -47,6 +47,7 @@
 </template>
 
 <script setup>
+    
     const props = defineProps({
         articleId: Number,
         title: String,

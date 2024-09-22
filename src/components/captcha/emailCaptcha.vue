@@ -40,7 +40,7 @@
 <script setup>
     import logo from '@/assets/textlogo2x.png'
 
-    import { ref, defineEmits,shallowRef,defineProps } from 'vue'
+    import { ref,shallowRef } from 'vue'
     import { useRouter } from 'vue-router'
     import Swal from "sweetalert2";
 

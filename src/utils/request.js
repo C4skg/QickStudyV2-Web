@@ -41,6 +41,9 @@ service.interceptors.response.use(
                 timer: 1500
             });
         }
+        if (response.config.method == "get" ){
+            return response.request.response;
+        }
         return response.data;
     },
 

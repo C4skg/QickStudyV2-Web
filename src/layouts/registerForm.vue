@@ -65,7 +65,7 @@
 <script setup>
     import logo from '@/assets/textlogo2x.png'
     
-    import { ref,defineEmits } from 'vue'
+    import { ref } from 'vue'
     import { register } from '@/api/user.js'
     import Swal from "sweetalert2";
 
