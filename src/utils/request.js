@@ -1,5 +1,6 @@
 import axios from "axios";
 import Swal from "sweetalert2";
+import { tr } from "vuetify/locale";
 
 const service = axios.create({
     baseURL: import.meta.env.VITE_APP_BASE_URL || '/api',
@@ -40,9 +41,6 @@ service.interceptors.response.use(
                 toast: true,
                 timer: 1500
             });
-        }
-        if (response.config.method == "get" ){
-            return response.request.response;
         }
         return response.data;
     },

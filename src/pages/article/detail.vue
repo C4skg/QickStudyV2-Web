@@ -1,7 +1,6 @@
 <template>
     这是第 {{ articleId }} 篇文章详情页
 
-
     <div class="render">
         <render 
             :data = "data"
@@ -25,8 +24,10 @@
 
     const data = ref(undefined);
 
+    document.title = `第 ${articleId.value} 篇文章详情页`;
+
     getArticleData().then( (response) => {
-        data.value = response;
+        data.value = response.context;
     });
     
     

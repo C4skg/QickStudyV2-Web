@@ -1,7 +1,9 @@
 <template>
+    <v-progress-circular indeterminate v-if="loading"></v-progress-circular>
     <div 
         class="markdown-render vditor-reset"
         v-html="renderedData"
+        v-else
     >
     </div>
 </template>
@@ -19,12 +21,14 @@
         data: String,
     });
 
-    const renderedData = ref(undefined)
+    const renderedData = ref(undefined),
+          loading = ref(false);
 
     watch(
         ()=>props.data,
         (newVal, oldVal) => {
             if (newVal!== oldVal && newVal && typeof newVal === 'string') {
+                loading.value = true;
                 VditorPreview.md2html(newVal,{
                     math: {
                         inlineDigit: true,
@@ -35,6 +39,7 @@
                     }
                 }).then((html) => {
                     renderedData.value = html
+                    loading.value = false;
                 })
             }
         },
@@ -46,5 +51,8 @@
 </script>
 
 <style scoped>
-
+    .is-loading {
+        background-color: red;
+        opacity: 0.5;
+    }
 </style>

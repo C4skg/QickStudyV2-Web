@@ -55,7 +55,6 @@
         images: String,
         footer: Object
     })
-
 </script>
 
 <style scoped>

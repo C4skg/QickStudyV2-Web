@@ -21,7 +21,7 @@
     import { useTheme } from 'vuetify'
     import { useSettingStore } from '@/stores/setting';
 
-    import articleCard from '@/components/articleCard'
+    import articleCard from '@/components/article/articleCard.vue'
     import navbar from '@/layouts/navbar'
 
     // Commen function import
