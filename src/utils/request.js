@@ -24,7 +24,6 @@ service.interceptors.request.use(
         return config;
     },
     error => {
-        console.log('error in request interceptor')
         return Promise.reject(error.response)
     }
 )
@@ -46,7 +45,6 @@ service.interceptors.response.use(
     },
 
     error => {
-        console.log(error)
         if (error.code == "ERR_BAD_RESPONSE"){
             Swal.fire({
                 position: "top-end",
@@ -70,7 +68,7 @@ service.interceptors.response.use(
         return Promise.reject(error);
     },
     complete => {
-        console.log(complete)
+        // console.log({complete})
     }
 )
 

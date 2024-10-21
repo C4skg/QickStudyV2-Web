@@ -32,7 +32,7 @@
     <v-card class="loading pa-3" v-if="loaded">
         <div class="text-center">
             <v-progress-circular :rotate="360" :size="50" :width="5" color="primary" indeterminate>
-              <template v-slot:default> <v-icon icon="mdi-security" size="30" /> </template>
+              <template v-slot:default> <v-icon icon="mdi-security" size="30" /></template>
             </v-progress-circular>
           </div>
     </v-card>
@@ -69,6 +69,8 @@
                 }
                 captchaImage.value = `data:image/${response.filetype};${response.format},${response.image}`;
                 loaded.value = false;
+            }).catch(() => {
+                captchaButton();
             });
         }
         if (e?.isTrusted) {
