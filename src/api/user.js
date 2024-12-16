@@ -46,3 +46,11 @@ export function getUserInfo(data){
         data
     })
 }
+
+export function updateToken(token){
+    return request({
+        url: '/user/updateToken',
+        method: 'post',
+        token
+    })
+}

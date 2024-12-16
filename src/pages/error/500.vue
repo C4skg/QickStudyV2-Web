@@ -10,9 +10,9 @@
             <v-stepper-header>
                 <v-stepper-item title="本地网络" subtitle="您自身网络" value="1" complete color="green"></v-stepper-item>
                 <v-divider></v-divider>
-                <v-stepper-item title="Web服务器" subtitle="本网站服务器" value="2"></v-stepper-item>
+                <v-stepper-item :rules="[() => true]" color="green" title="Web服务" subtitle="本网站服务" value="2"></v-stepper-item>
                 <v-divider></v-divider>
-                <v-stepper-item :rules="[() => false]" subtitle="网络连接丢失" title="远程服务器"
+                <v-stepper-item :rules="[() => false]" subtitle="网络连接错误" title="后台服务"
                     value="3"></v-stepper-item>
             </v-stepper-header>
         </v-stepper>

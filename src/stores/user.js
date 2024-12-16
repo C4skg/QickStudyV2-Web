@@ -1,11 +1,27 @@
 import { defineStore } from "pinia";
+import { updateToken,logout } from "@/api/user";
 
 export const useUserInfoStore = defineStore("userinfo", {
     state: () => ({
-        
+        userId: null,
+        nickName: null,
+        token: null,
+        avatar: null
     }),
     actions: {
-
+        loginUser(...userInfo){
+            const { userId, nickName, token, avatar } = userInfo;
+            this.userId = userId;
+            this.nickName = nickName;
+            this.token = token;
+            this.avatar = avatar;
+        },
+        updateToken(){
+            updateToken();
+        },
+        logoutUser(){
+            this.$reset();
+        }
     }
 });
 

@@ -37,6 +37,9 @@ router.beforeEach((to,from,next)=>{
     if ( !router.hasRoute(to.name) ){
         next({name: '404'})
     }
+    if ( to.meta.loginRequired ){
+        next({name: 'user.login'});
+    }
     if ( to.meta.title ){
         document.title = to.meta.title
     };

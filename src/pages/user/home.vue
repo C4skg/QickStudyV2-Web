@@ -4,14 +4,20 @@
 
 <script setup>
     import { ref } from 'vue';
-    import { useRoute } from 'vue-router';
+    import { useRoute,useRouter } from 'vue-router';
+    import { useUserInfoStore } from '@/stores/user.js';
 
-    const route = useRoute();
+    const route = useRoute(),
+          router = useRouter();
 
     const userId = ref(route.params.userId);
-    
+
+    const userInfoStore = useUserInfoStore();
+
+    userInfoStore.logoutUser()
     if (!userId.value) {
-        userId.value = undefined;
+        // userId.value = undefined;
+        router.push({name: '404'})
     }
 
 </script>

@@ -1,3 +1,4 @@
+import { login } from "@/api/user";
 import { components } from "vuetify/dist/vuetify-labs.js";
 
 const routes = [
@@ -10,7 +11,8 @@ const routes = [
         name: "home",
         component: () => import("@/pages/home.vue"),
         meta: {
-            title: "QickStudy 平台"
+            title: "QickStudy 平台",
+            loginRequired: true
         }
     },
     {
@@ -18,15 +20,16 @@ const routes = [
         children: [
             {
                 //用户主页
-                path: "/user/:userId?",
+                path: ":userId?",
                 name: "user.home",
                 component: () => import("@/pages/user/home.vue"),
                 meta: {
                     title: "",
+                    loginRequired: false
                 }
             },
             {
-                path: "/user/login",
+                path: "login",
                 name: "user.login",
                 component: () => import("@/pages/user/login.vue"),
                 meta: {
@@ -34,7 +37,7 @@ const routes = [
                 }
             },
             {
-                path: "/user/register",
+                path: "register",
                 name: "user.register",
                 component: () => import("@/pages/user/register.vue"),
                 meta: {
@@ -42,7 +45,7 @@ const routes = [
                 }
             },
             {
-                path: "/user/remember",
+                path: "remember",
                 name: "user.remember",
                 component: () => import("@/pages/user/remember.vue"),
                 meta: {
@@ -55,7 +58,7 @@ const routes = [
         path: "/article",
         children: [
             {
-                path: "/article/detail/:articleId",
+                path: "detail/:articleId",
                 name: "article.detail",
                 component: () => import("@/pages/article/detail.vue"),
                 meta: {}
@@ -66,7 +69,7 @@ const routes = [
         path: "/error",
         children: [
             {
-                path: "/404",
+                path: "404",
                 name: "404",
                 component: () => import("@/pages/error/404.vue"),
                 meta: {
@@ -74,7 +77,7 @@ const routes = [
                 }
             },
             {
-                path: "/500",
+                path: "500",
                 name: "500",
                 component: () => import("@/pages/error/500.vue"),
                 meta: {
