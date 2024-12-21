@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-    import VditorPreview from 'vditor/dist/method.min'
+    // import VditorPreview from 'vditor/dist/method.min'
     // import "vditor/dist/css/content-theme/dark.css";
     // import "vditor/dist/css/content-theme/light.css";
     // import "vditor/dist/css/content-theme/wechat.css";

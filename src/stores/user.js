@@ -33,9 +33,7 @@ export const useRegisterStore = defineStore("register", {
     }),
     actions: {
         clear(){
-            this.email = null;
-            this.token = null;
-            this.time = null;
+            this.$reset();
         },
         update(email,token){
             this.email = email;
