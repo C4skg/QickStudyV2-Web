@@ -54,8 +54,7 @@ service.interceptors.response.use(
                 toast: true,
                 timer: 1500
             })
-        }
-        else if (error.response.status == 404){
+        }else if (error.response.status == 404){
             Swal.fire({
                 position: "top-end",
                 icon: "error",

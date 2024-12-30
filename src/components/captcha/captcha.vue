@@ -69,7 +69,7 @@
                 }
                 captchaImage.value = `data:image/${response.filetype};${response.format},${response.image}`;
                 loaded.value = false;
-            }).catch(() => {
+            }).catch((e) => {
                 captchaButton();
             });
         }
