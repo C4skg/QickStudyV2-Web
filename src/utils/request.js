@@ -1,6 +1,5 @@
 import axios from "axios";
 import Swal from "sweetalert2";
-import { tr } from "vuetify/locale";
 
 const service = axios.create({
     baseURL: import.meta.env.VITE_APP_BASE_URL || '/api',
