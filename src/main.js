@@ -17,4 +17,11 @@ const app = createApp(App)
 
 registerPlugins(app)
 
-app.mount('#app')
+
+setTimeout(() => {
+    var loader = document.getElementsByClassName("process")[0];
+    loader.setAttribute("data-complete","true")
+    setTimeout(() => {
+        app.mount('#app')
+    },500)
+},1500)

@@ -1,17 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/src/assets/logo.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QickStudy平台</title>
+  </head>
+  <body>
+    <div id="app">
+        <div id="loader">
+            <div class="logo">
+              <img src="/src/assets/textlogo.png" alt="">
+            </div>
+            <div class="process">
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" href="/src/assets/logo.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>QickStudy平台</title>
-</head>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+  <style>
+    body{
+      background-color: rgb(var(--v-theme-background));
+    }
+    #loader{
+      width: 30%;
+      max-width: 200px;
+      min-width: 150px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    #loader .logo{
+      width: 100%;
+    }
+    img{
+      width: 100%;
+      height: 100%;
+    }
+    #loader .process{
+      width: 100%;
+      height: 5px;
+      position: relative;
+      border-radius: 5px;
+      overflow: hidden;
+      background-color: rgb(var(--v-theme-surface));
+    }
+    #loader .process::after{
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0%;
+      height: inherit;
+      background-color: rgb(var(--v-theme-primary));
+      animation: progress 2s ease-in-out;
+      animation-fill-mode: both;
+    }
+    #loader .process[data-complete='true']::after{
+      width: 100% !important;
+    }
+    @keyframes progress{
+      0%{
+        width: 0%;
+      }
+      30%{
+        width: 30%;
+      }
+      60%{
+        width: 60%;
+      }
+      100%{
+        width: 60%;
+      }
+    }
 
-<body>
-  <div class="electron-drop-bar"></div>
-  <div id="app"></div>
-  <script type="module" src="/src/main.js"></script>
-</body>
-
+  </style>
 </html>
